@@ -8,6 +8,7 @@ import store from './store'
 import FastClick from 'fastclick'
 import infiniteScroll from 'vue-infinite-scroll'
 import base from './utils/base' // rem及环境判断 适用移动端
+import './assets/css/style.scss'
 
 Vue.use(base)
 Vue.use(infiniteScroll) // 需要无限滚动加载时使用

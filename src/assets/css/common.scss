@@ -1,0 +1,32 @@
+$baseColor: #FD8944;
+html {
+  font-family: "PingFang SC", Helvetica, Arial, "Microsoft YaHei", "Helvetica Neue", "Hiragino Sans GB", "Heiti SC",  "WenQuanYi Micro Hei", sans-serif;
+  color: #343434;
+  background: #fbfbfb;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-y: scroll;
+}
+body {
+  font-size: .24rem;
+}
+a {
+  color: #6c6c6c;
+}
+em {
+  color:$baseColor;
+  font-style: normal;
+  a {
+    color:$baseColor;
+  }
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+
+.light {
+  color: #ccc;
+}
