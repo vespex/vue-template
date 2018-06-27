@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const isDev = process.env.NODE_ENV === 'development'
 
-function checkStatus (response) {
+function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response.data;
   }
@@ -11,7 +11,8 @@ function checkStatus (response) {
   error.response = response;
   throw error;
 }
-function parseErrorMessage (res) { // 错误处理
+
+function parseErrorMessage(res) { // 错误处理
   const { status, message, data } = res;
   if (status !== 1) {
     throw new Error(message);
