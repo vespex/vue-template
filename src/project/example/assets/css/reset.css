@@ -474,6 +474,3 @@ html {
   font-size: 20px;
 }
 
-.clearfix:before, .container:after { content: ""; display: table; }
-.clearfix:after { clear: both;}
-.clearfix { zoom: 1; }

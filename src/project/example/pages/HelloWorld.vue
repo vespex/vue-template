@@ -1,6 +1,6 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+  <div class="hello" v-title="'hello'">
+    <h1>{{ msg }}2222222222222</h1>
     <h2>Essential Links</h2>
     <ul>
       <li>
@@ -84,6 +84,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'HelloWorld',
   data () {

@@ -26,9 +26,7 @@ module.exports = {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'comma-dangle': 'off', // 结尾可加逗号 适用于习惯react风格定义对象等等的情况
-    'one-var': 'off',
     'semi': 'off', // 分号结尾
-    'space-before-function-paren': 'off', // function 后空格
-    'eol-last': 'off' // 最后留空
+    // 'space-before-function-paren': 'off', // function 后空格
   }
 }

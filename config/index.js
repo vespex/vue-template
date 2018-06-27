@@ -4,6 +4,10 @@
 
 const path = require('path')
 
+var config = require('./build.conf')
+var project = process.env.PROJECT_ENV || ''
+var publicPath = config.publicPath ? (config.publicPath + project + '/') : ''
+
 module.exports = {
   dev: {
 
@@ -45,13 +49,15 @@ module.exports = {
 
   build: {
     // Template for index.html
-    index: path.resolve(__dirname, '../dist/index.html'),
+    // index: path.resolve(__dirname, '../dist/index.html'),
+    index: path.resolve(__dirname, config.indexPath, project, 'index.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../dist'),
+    // assetsRoot: path.resolve(__dirname, '../dist'),
+    assetsRoot: path.resolve(__dirname, config.cdnPath, project),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
-
+    // assetsPublicPath: '/',
+    assetsPublicPath: publicPath,
     /**
      * Source Maps
      */

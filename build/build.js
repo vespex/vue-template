@@ -1,7 +1,10 @@
 'use strict'
 require('./check-versions')()
 
+const project = process.argv[2]
+
 process.env.NODE_ENV = 'production'
+process.env.PROJECT_ENV = project
 
 const ora = require('ora')
 const rm = require('rimraf')
@@ -9,10 +12,22 @@ const path = require('path')
 const chalk = require('chalk')
 const webpack = require('webpack')
 const config = require('../config')
+const buildConfig = require('../config/build.conf')
 const webpackConfig = require('./webpack.prod.conf')
 
 const spinner = ora('building for production...')
 spinner.start()
+
+const projectBasePath = './src/project/'
+
+const projectFile = require('fs').readdirSync(projectBasePath)
+
+if (projectFile.indexOf(project) === -1) {
+  console.error('project ' + process.env.PROJECT_ENV + ' not found')
+  return false
+}
+
+webpackConfig.entry = ['babel-polyfill', './src/project/' + project + '/main.js']
 
 rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
   if (err) throw err
@@ -39,3 +54,5 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
     ))
   })
 })
+
+

@@ -27,7 +27,7 @@ function parseErrorMessage(res) { // 错误处理
  * @return {object}           An object containing either "data" or "err"
  */
 const host = ''
-export default function request(url, options = {}) {
+export default function request (url, options = {}) {
   if (url.startsWith('/')) {
     url = `${isDev ? '/api' : host}${url}`
   }
@@ -64,7 +64,7 @@ export default function request(url, options = {}) {
     });
 }
 
-export function busyRequest() {
+export function busyRequest () {
   let busy = false
   return (url, options) => {
     return new Promise((resolve, reject) => {
