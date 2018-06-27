@@ -7,7 +7,8 @@ import router from './router'
 import store from './store'
 import FastClick from 'fastclick'
 import infiniteScroll from 'vue-infinite-scroll'
-import base from './utils/base' // rem及环境判断 适用移动端
+import base from '@/utils/base' // rem及环境判断 适用移动端
+import 'normalize.css'
 import './assets/css/style.scss'
 
 Vue.use(base)

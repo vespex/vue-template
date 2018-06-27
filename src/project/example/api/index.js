@@ -1,4 +1,4 @@
-import request, {busyRequest} from '../utils/request';
+import request, {busyRequest} from '@/utils/request';
 const busyReq = busyRequest()
 export function test (params) {
   return request('/test', params);
