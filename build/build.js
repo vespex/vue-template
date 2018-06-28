@@ -28,7 +28,7 @@ if (projectFile.indexOf(project) === -1) {
 
 webpackConfig.entry = ['babel-polyfill', './src/project/' + project + '/main.js']
 
-rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
+rm(path.join(config.build.assetsRoot), err => {
   if (err) throw err
   webpack(webpackConfig, (err, stats) => {
     spinner.stop()
