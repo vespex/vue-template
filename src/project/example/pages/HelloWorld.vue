@@ -1,5 +1,6 @@
 <template>
   <div class="hello" v-title="'hello'">
+    <img src="../assets/logo.png">
     <h1>{{ msg }}2222222222222</h1>
     <h2>Essential Links</h2>
     <ul>
@@ -84,6 +85,7 @@
 </template>
 
 <script>
+import {test} from '../api/index'
 
 export default {
   name: 'HelloWorld',
@@ -91,12 +93,18 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
-  }
+  },
+  mounted () {
+    test()
+  },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.hello {
+  text-align: center;
+}
 h1, h2 {
   font-weight: normal;
 }

@@ -8,6 +8,8 @@ import store from './store'
 import FastClick from 'fastclick'
 import infiniteScroll from 'vue-infinite-scroll'
 import base from '@/utils/base' // rem及环境判断 适用移动端
+import request from '@/utils/request'
+
 import 'normalize.css'
 import './assets/css/style.scss'
 
@@ -17,6 +19,7 @@ Vue.use(infiniteScroll) // 需要无限滚动加载时使用
 FastClick.attach(document.body) // 添加fastclick 适用移动端
 
 Vue.config.productionTip = false
+Vue.prototype.$request = request
 
 const mixin = {
   computed: {
