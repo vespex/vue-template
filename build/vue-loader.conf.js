@@ -1,10 +1,15 @@
 'use strict'
+const px2rem = require('postcss-plugin-px2rem')
 const utils = require('./utils')
 const config = require('../config')
 const isProduction = process.env.NODE_ENV === 'production'
 const sourceMapEnabled = isProduction
   ? config.build.productionSourceMap
   : config.dev.cssSourceMap
+
+const px2remOpts = {
+  minPixelValue: 1
+}
 
 module.exports = {
   loaders: utils.cssLoaders({
@@ -18,5 +23,6 @@ module.exports = {
     source: 'src',
     img: 'src',
     image: 'xlink:href'
-  }
+  },
+  postcss: [px2rem(px2remOpts)]
 }

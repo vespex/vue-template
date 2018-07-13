@@ -2,21 +2,27 @@ import axios from 'axios';
 
 const isDev = process.env.NODE_ENV === 'development'
 
-function checkStatus (response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response.data;
+function checkStatus (res) {
+  const { status, data, statusText } = res;
+
+  if (status >= 200 && status < 300) {
+    return data;
   }
 
-  const error = new Error(response.statusText);
-  error.response = response;
+  const error = new Error(statusText);
+  error.res = res;
   throw error;
 }
 
 function parseErrorMessage (res) { // 错误处理
   const { status, message, data } = res;
+
   if (status !== 1) {
-    throw new Error(message);
+    const error = new Error(message);
+    error.res = res
+    throw error;
   }
+
   return data;
 }
 
@@ -40,7 +46,11 @@ export default function request (url, options = {}) {
     // },
   };
   const newOptions = { ...defaultOptions, ...options };
-  if (newOptions.method === 'POST' || newOptions.method === 'PUT') {
+  if (
+    newOptions.method === 'POST' ||
+    newOptions.method === 'PUT' ||
+    newOptions.method === 'DELETE'
+  ) {
     if (!(newOptions.body instanceof FormData)) {
       newOptions.headers = {
         Accept: 'application/json',
@@ -56,13 +66,9 @@ export default function request (url, options = {}) {
       };
     }
   }
-
   return axios(url, newOptions)
     .then(checkStatus)
     .then(parseErrorMessage)
-    .catch(err => {
-      throw new Error(err.message)
-    });
 }
 
 export function busyRequest () {
